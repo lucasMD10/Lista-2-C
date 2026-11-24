@@ -8,7 +8,7 @@
 
 #define TAM 5
 
-int lerVetor(int v[], const char *nome) {
+int lerVetor(int v[], char nome[]) {
     for (int i = 0; i < TAM; i++) {
         printf("%s[%d]: ", nome, i);
         if (scanf("%d", &v[i]) != 1) {

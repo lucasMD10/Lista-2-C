@@ -8,27 +8,31 @@
  */
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
+
+void removerQuebraLinha(char texto[]) {
+    int tamanho = strlen(texto);
+    if (tamanho > 0 && texto[tamanho - 1] == '\n') {
+        texto[tamanho - 1] = '\0';
+    }
+}
 
 int validarCPF(char cpf[]) {
-    size_t tamanho = strlen(cpf);
+    int tamanho = strlen(cpf);
 
     if (tamanho == 11) {
-
-        for (size_t i = 0; i < tamanho; i++) {
-            if (!isdigit((unsigned char)cpf[i])) return 0;
+        for (int i = 0; i < tamanho; i++) {
+            if ((cpf[i] < '0' || cpf[i] > '9')) return 0;
         }
         return 1;
     }
 
     if (tamanho == 14) {
-
-        for (size_t i = 0; i < tamanho; i++) {
+        for (int i = 0; i < tamanho; i++) {
             if (i == 3 || i == 7) {
                 if (cpf[i] != '.') return 0;
             } else if (i == 11) {
                 if (cpf[i] != '-') return 0;
-            } else if (!isdigit((unsigned char)cpf[i])) {
+            } else if ((cpf[i] < '0' || cpf[i] > '9')) {
                 return 0;
             }
         }
@@ -46,7 +50,7 @@ int main(void) {
         printf("Erro na leitura.\n");
         return 1;
     }
-    cpf[strcspn(cpf, "\n")] = '\0';
+    removerQuebraLinha(cpf);
 
     if (validarCPF(cpf)) {
         printf("Formato de CPF valido.\n");

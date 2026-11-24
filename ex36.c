@@ -9,6 +9,13 @@
 
 #define MAX_ALUNOS 50
 
+void removerQuebraLinha(char texto[]) {
+    int tamanho = strlen(texto);
+    if (tamanho > 0 && texto[tamanho - 1] == '\n') {
+        texto[tamanho - 1] = '\0';
+    }
+}
+
 struct Aluno {
     char nome[50];
     float nota;
@@ -43,7 +50,7 @@ int main(void) {
     for (int i = 0; i < n; i++) {
         printf("Nome do aluno %d: ", i + 1);
         if (fgets(turma[i].nome, sizeof(turma[i].nome), stdin) == NULL) return 1;
-        turma[i].nome[strcspn(turma[i].nome, "\n")] = '\0';
+        removerQuebraLinha(turma[i].nome);
 
         printf("Nota de %s (0 a 10): ", turma[i].nome);
         if (scanf("%f", &turma[i].nota) != 1 || turma[i].nota < 0 || turma[i].nota > 10) {

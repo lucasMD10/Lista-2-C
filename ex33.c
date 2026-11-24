@@ -6,8 +6,8 @@
  */
 #include <stdio.h>
 
-unsigned long long fatorial(int n) {
-    unsigned long long resultado = 1;
+int fatorial(int n) {
+    int resultado = 1;
     for (int i = 2; i <= n; i++) {
         resultado *= i;
     }
@@ -17,12 +17,12 @@ unsigned long long fatorial(int n) {
 int main(void) {
     int n;
 
-    printf("Digite N (0 a 20): ");
-    if (scanf("%d", &n) != 1 || n < 0 || n > 20) {
+    printf("Digite N (0 a 12): ");
+    if (scanf("%d", &n) != 1 || n < 0 || n > 12) {
         printf("Valor invalido.\n");
         return 1;
     }
 
-    printf("%d! = %llu\n", n, fatorial(n));
+    printf("%d! = %d\n", n, fatorial(n));
     return 0;
 }

@@ -24,11 +24,7 @@ int main(void) {
         printf("0 - Sair\n");
         printf("Escolha uma opcao: ");
 
-        int lidos = scanf("%d", &opcao);
-        if (lidos == EOF) {
-            break;
-        }
-        if (lidos != 1) {
+        if (scanf("%d", &opcao) != 1) {
             limparBuffer();
             printf("Opcao invalida.\n");
             opcao = -1;
@@ -39,9 +35,9 @@ int main(void) {
             printf("Encerrando a calculadora...\n");
         } else if (opcao >= 1 && opcao <= 4) {
             printf("Digite o primeiro numero: ");
-            if (scanf("%lf", &a) != 1) { if (feof(stdin)) break; limparBuffer(); printf("Numero invalido.\n"); continue; }
+            if (scanf("%lf", &a) != 1) { limparBuffer(); printf("Numero invalido.\n"); continue; }
             printf("Digite o segundo numero: ");
-            if (scanf("%lf", &b) != 1) { if (feof(stdin)) break; limparBuffer(); printf("Numero invalido.\n"); continue; }
+            if (scanf("%lf", &b) != 1) { limparBuffer(); printf("Numero invalido.\n"); continue; }
 
             switch (opcao) {
                 case 1: printf("Resultado: %.2f\n", a + b); break;

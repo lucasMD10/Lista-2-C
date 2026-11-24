@@ -7,16 +7,21 @@
 #include <stdio.h>
 #include <string.h>
 
+void removerQuebraLinha(char texto[]) {
+    int tamanho = strlen(texto);
+    if (tamanho > 0 && texto[tamanho - 1] == '\n') {
+        texto[tamanho - 1] = '\0';
+    }
+}
+
 struct Pessoa {
     char nome[50];
     int idade;
 };
 
 void inicializar(struct Pessoa *p, char nome[], int idade) {
-
-    strncpy(p->nome, nome, sizeof(p->nome) - 1);
-    p->nome[sizeof(p->nome) - 1] = '\0';
-    p->idade = idade;
+    strcpy((*p).nome, nome);
+    (*p).idade = idade;
 }
 
 int main(void) {
@@ -26,7 +31,7 @@ int main(void) {
 
     printf("Nome: ");
     if (fgets(nome, sizeof(nome), stdin) == NULL) return 1;
-    nome[strcspn(nome, "\n")] = '\0';
+    removerQuebraLinha(nome);
 
     printf("Idade: ");
     if (scanf("%d", &idade) != 1 || idade < 0 || idade > 150) {

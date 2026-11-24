@@ -11,13 +11,7 @@ int main(void) {
 
     while (numero <= 0) {
         printf("Digite um numero positivo: ");
-        int lidos = scanf("%d", &numero);
-        if (lidos == EOF) {
-            printf("\nFim da entrada.\n");
-            return 1;
-        }
-        if (lidos != 1) {
-
+        if (scanf("%d", &numero) != 1) {
             int c;
             while ((c = getchar()) != '\n' && c != EOF) { }
             numero = 0;

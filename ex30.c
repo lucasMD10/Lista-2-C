@@ -9,6 +9,13 @@
 
 #define NOME_ARQUIVO "dados.txt"
 
+void removerQuebraLinha(char texto[]) {
+    int tamanho = strlen(texto);
+    if (tamanho > 0 && texto[tamanho - 1] == '\n') {
+        texto[tamanho - 1] = '\0';
+    }
+}
+
 void limparBuffer(void) {
     int c;
     while ((c = getchar()) != '\n' && c != EOF) { }
@@ -22,7 +29,7 @@ void inserirDados(void) {
         printf("Erro na leitura.\n");
         return;
     }
-    texto[strcspn(texto, "\n")] = '\0';
+    removerQuebraLinha(texto);
 
     if (strlen(texto) == 0) {
         printf("Nada foi digitado.\n");
@@ -68,11 +75,7 @@ int main(void) {
         printf("3 - Sair\n");
         printf("Opcao: ");
 
-        int lidos = scanf("%d", &opcao);
-        if (lidos == EOF) {
-            break;
-        }
-        if (lidos != 1) {
+        if (scanf("%d", &opcao) != 1) {
             opcao = 0;
         }
         limparBuffer();

@@ -7,6 +7,13 @@
 #include <stdio.h>
 #include <string.h>
 
+void removerQuebraLinha(char texto[]) {
+    int tamanho = strlen(texto);
+    if (tamanho > 0 && texto[tamanho - 1] == '\n') {
+        texto[tamanho - 1] = '\0';
+    }
+}
+
 int main(void) {
     FILE *arquivo = fopen("nomes.txt", "r");
     if (arquivo == NULL) {
@@ -18,7 +25,7 @@ int main(void) {
     int contador = 0;
 
     while (fgets(nome, sizeof(nome), arquivo) != NULL) {
-        nome[strcspn(nome, "\r\n")] = '\0';
+        removerQuebraLinha(nome);
 
         if (strlen(nome) > 5) {
             printf("- %s\n", nome);

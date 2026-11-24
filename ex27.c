@@ -5,7 +5,6 @@
  * Data: 24/11/2026
  */
 #include <stdio.h>
-#include <string.h>
 
 int main(void) {
     FILE *arquivo = fopen("funcionario.csv", "r");
@@ -14,27 +13,20 @@ int main(void) {
         return 1;
     }
 
-    char linha[200];
+    char cabecalho[100];
     char nome[100];
     int idade;
     float salario;
     int registro = 0;
 
-    while (fgets(linha, sizeof(linha), arquivo) != NULL) {
+    fgets(cabecalho, 100, arquivo);
 
-        if (strncmp(linha, "Nome,", 5) == 0) {
-            continue;
-        }
-
-        if (sscanf(linha, "%99[^,],%d,%f", nome, &idade, &salario) == 3) {
-            registro++;
-            printf("Funcionario %d\n", registro);
-            printf("  Nome   : %s\n", nome);
-            printf("  Idade  : %d anos\n", idade);
-            printf("  Salario: R$ %.2f\n\n", salario);
-        } else {
-            printf("Linha mal formatada ignorada: %s", linha);
-        }
+    while (fscanf(arquivo, " %99[^,],%d,%f", nome, &idade, &salario) == 3) {
+        registro++;
+        printf("Funcionario %d\n", registro);
+        printf("  Nome   : %s\n", nome);
+        printf("  Idade  : %d anos\n", idade);
+        printf("  Salario: R$ %.2f\n\n", salario);
     }
 
     if (registro == 0) {

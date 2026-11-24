@@ -8,7 +8,7 @@
 
 int main(void) {
     int n;
-    long long soma = 0;
+    int soma = 0;
 
     printf("Digite um numero N (N >= 1): ");
     if (scanf("%d", &n) != 1 || n < 1) {
@@ -20,6 +20,6 @@ int main(void) {
         soma += i;
     }
 
-    printf("Soma de 1 a %d = %lld\n", n, soma);
+    printf("Soma de 1 a %d = %d\n", n, soma);
     return 0;
 }

@@ -30,7 +30,7 @@ void imprimir(int arr[], int n) {
 
 int main(void) {
     int numeros[] = {42, 7, 19, 3, 88, 25, 1, 64};
-    int n = sizeof(numeros) / sizeof(numeros[0]);
+    int n = 8;
 
     printf("Antes : ");
     imprimir(numeros, n);

@@ -7,6 +7,13 @@
 #include <stdio.h>
 #include <string.h>
 
+void removerQuebraLinha(char texto[]) {
+    int tamanho = strlen(texto);
+    if (tamanho > 0 && texto[tamanho - 1] == '\n') {
+        texto[tamanho - 1] = '\0';
+    }
+}
+
 int main(void) {
     char nome[100];
     int idade;
@@ -17,7 +24,7 @@ int main(void) {
         printf("Erro na leitura.\n");
         return 1;
     }
-    nome[strcspn(nome, "\n")] = '\0';
+    removerQuebraLinha(nome);
 
     for (int i = 0; nome[i] != '\0'; i++) {
         if (nome[i] == ',') nome[i] = ' ';
@@ -35,16 +42,13 @@ int main(void) {
         return 1;
     }
 
-    FILE *arquivo = fopen("funcionario.csv", "a");
+    FILE *arquivo = fopen("funcionario.csv", "w");
     if (arquivo == NULL) {
         printf("Erro ao abrir funcionario.csv.\n");
         return 1;
     }
 
-    fseek(arquivo, 0, SEEK_END);
-    if (ftell(arquivo) == 0) {
-        fprintf(arquivo, "Nome,Idade,Salario\n");
-    }
+    fprintf(arquivo, "Nome,Idade,Salario\n");
 
     fprintf(arquivo, "%s,%d,%.2f\n", nome, idade, salario);
     fclose(arquivo);

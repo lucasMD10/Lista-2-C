@@ -15,7 +15,7 @@ int main(void) {
     }
 
     int numero;
-    long long soma = 0;
+    int soma = 0;
     int quantidade = 0;
 
     while (fscanf(arquivo, "%d", &numero) == 1) {
@@ -24,6 +24,6 @@ int main(void) {
     }
 
     fclose(arquivo);
-    printf("Foram lidos %d numeros. Soma total = %lld\n", quantidade, soma);
+    printf("Foram lidos %d numeros. Soma total = %d\n", quantidade, soma);
     return 0;
 }

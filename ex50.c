@@ -12,9 +12,8 @@ double mult(double a, double b) { return a * b; }
 double divi(double a, double b) { return a / b; }
 
 int main(void) {
-
     double (*operacoes[4])(double, double) = {soma, sub, mult, divi};
-    const char *nomes[4] = {"Soma", "Subtracao", "Multiplicacao", "Divisao"};
+    char *nomes[4] = {"Soma", "Subtracao", "Multiplicacao", "Divisao"};
 
     int indice;
     double a, b;

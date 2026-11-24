@@ -10,6 +10,13 @@
 #define QTD 5
 #define TAM_NOME 100
 
+void removerQuebraLinha(char texto[]) {
+    int tamanho = strlen(texto);
+    if (tamanho > 0 && texto[tamanho - 1] == '\n') {
+        texto[tamanho - 1] = '\0';
+    }
+}
+
 int main(void) {
     char nome[TAM_NOME];
 
@@ -26,7 +33,7 @@ int main(void) {
             fclose(arquivo);
             return 1;
         }
-        nome[strcspn(nome, "\n")] = '\0';
+        removerQuebraLinha(nome);
         fprintf(arquivo, "%s\n", nome);
     }
 

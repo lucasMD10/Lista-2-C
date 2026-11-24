@@ -17,7 +17,7 @@ int buscar(int arr[], int n, int chave) {
 
 int main(void) {
     int numeros[] = {15, 8, 23, 42, 4, 16};
-    int n = sizeof(numeros) / sizeof(numeros[0]);
+    int n = 6;
     int chave;
 
     printf("Array: ");

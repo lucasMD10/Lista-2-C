@@ -7,7 +7,6 @@
 #include <stdio.h>
 
 int main(void) {
-
     printf("Usando while: ");
     int i = 10;
     while (i >= 1) {

@@ -17,17 +17,17 @@
 
 int main(void) {
     int n;
-    long long atual = 0, proximo = 1, temp;
+    int atual = 0, proximo = 1, temp;
 
     printf("Quantos termos de Fibonacci deseja ver? ");
-    if (scanf("%d", &n) != 1 || n <= 0 || n > 92) {
-        printf("Valor invalido. Digite entre 1 e 92.\n");
+    if (scanf("%d", &n) != 1 || n <= 0 || n > 46) {
+        printf("Valor invalido. Digite entre 1 e 46.\n");
         return 1;
     }
 
     int i = 0;
     while (i < n) {
-        printf("%lld ", atual);
+        printf("%d ", atual);
         temp = atual + proximo;
         atual = proximo;
         proximo = temp;

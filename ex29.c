@@ -7,21 +7,23 @@
 #include <stdio.h>
 #include <string.h>
 
+void removerQuebraLinha(char texto[]) {
+    int tamanho = strlen(texto);
+    if (tamanho > 0 && texto[tamanho - 1] == '\n') {
+        texto[tamanho - 1] = '\0';
+    }
+}
+
 int main(void) {
     char nomeOrigem[100], nomeDestino[100];
 
     printf("Nome do arquivo de origem (ex.: teste.txt): ");
     if (fgets(nomeOrigem, sizeof(nomeOrigem), stdin) == NULL) return 1;
-    nomeOrigem[strcspn(nomeOrigem, "\n")] = '\0';
+    removerQuebraLinha(nomeOrigem);
 
     printf("Nome do arquivo de destino (ex.: copia.txt): ");
     if (fgets(nomeDestino, sizeof(nomeDestino), stdin) == NULL) return 1;
-    nomeDestino[strcspn(nomeDestino, "\n")] = '\0';
-
-    if (strcmp(nomeOrigem, nomeDestino) == 0) {
-        printf("Origem e destino nao podem ser o mesmo arquivo.\n");
-        return 1;
-    }
+    removerQuebraLinha(nomeDestino);
 
     FILE *origem = fopen(nomeOrigem, "rb");
     if (origem == NULL) {

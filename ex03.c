@@ -19,8 +19,7 @@ int main(void) {
     if (numero < 2) {
         ehPrimo = 0;
     } else {
-
-        for (int divisor = 2; divisor * divisor <= numero; divisor++) {
+        for (int divisor = 2; divisor < numero; divisor++) {
             if (numero % divisor == 0) {
                 ehPrimo = 0;
                 break;

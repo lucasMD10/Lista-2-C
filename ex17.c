@@ -10,6 +10,13 @@
 #define QTD 5
 #define TAM_NOME 50
 
+void removerQuebraLinha(char texto[]) {
+    int tamanho = strlen(texto);
+    if (tamanho > 0 && texto[tamanho - 1] == '\n') {
+        texto[tamanho - 1] = '\0';
+    }
+}
+
 int main(void) {
     char nomes[QTD][TAM_NOME];
 
@@ -20,7 +27,7 @@ int main(void) {
             printf("Erro na leitura.\n");
             return 1;
         }
-        nomes[i][strcspn(nomes[i], "\n")] = '\0';
+        removerQuebraLinha(nomes[i]);
     }
 
     printf("\nLista de cidades:\n");
